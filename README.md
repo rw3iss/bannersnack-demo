@@ -34,6 +34,7 @@ npm run dev
 
 
 # Notes:
--Backend uses sqlite.
+```
 -I did not have a chance to finish Reset Password/emailing the user flow... but it's stubbed out for the most part.
--See TODO.
+-See TODO.md
+```
