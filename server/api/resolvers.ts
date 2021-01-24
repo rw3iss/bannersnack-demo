@@ -92,10 +92,29 @@ module.exports = {
         }
     },
 
-    async resetPassword(root, { email }) {
+    async resetPassword({ email }, ctx) {
         try {
-          // todo
-          return { success: true }
+            let resetToken = jsonwebtoken.sign(
+                { email: email }, 
+                config.jwtSecret,
+                { expiresIn: '1d' }
+            )
+
+            const user = await User.findOne({ where: { email }})
+            if (!user) {
+                throw new Error('No user with that email')
+            }
+
+            user.update({
+                resetToken: resetToken
+            })
+
+            // Todo: use some service to send emails... 
+            
+            return {
+                success: true,
+                message: "Please check your email (todo) ..."
+            }
         } catch (error) {
             throw new Error(error.message)
         }

@@ -8,7 +8,8 @@ const sequelize = new Sequelize({
 
 const User = sequelize.define('User', {
     email: DataTypes.STRING,
-    password: DataTypes.STRING
+    password: DataTypes.STRING,
+    resetToken: DataTypes.STRING
 });
 
 const Item = sequelize.define('Item', {

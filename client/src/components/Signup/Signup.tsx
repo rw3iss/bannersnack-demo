@@ -20,6 +20,7 @@ export default function Signup({history}) {
 
         UserService.signup(email, password)
         .then((r: any) => {
+            setError('');
             setSuccess(true)
         })
         .catch(e => {

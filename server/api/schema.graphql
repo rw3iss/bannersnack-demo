@@ -18,7 +18,7 @@ type LoginResponse {
     user: User
 }
 
-type SignupResponse {
+type ActionResponse {
     success: Boolean,
     message: String
 }
@@ -28,8 +28,8 @@ type Query {
 }
 
 type Mutation {
-    signup(email: String!, password: String!): SignupResponse
+    signup(email: String!, password: String!): ActionResponse
     login(email: String!, password: String!): LoginResponse
-    resetPassword(email: String!): Boolean
+    resetPassword(email: String!): ActionResponse
     addItem(title: String!): Item
 }

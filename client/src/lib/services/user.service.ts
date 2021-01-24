@@ -44,9 +44,24 @@ class UserService extends HttpClient {
         })
     }
 
-    resetPassword(email: string) {
-        // TODO
-        return this.request(`reset-password`, 'POST', { email });
+    resetPassword(email: string) {     
+        var query = `mutation ResetPassword($email: String!) {
+            resetPassword(email: $email) {
+                success, message
+            }
+        }`
+
+        return this.request(`/graphql`, 'POST', { query, variables: { email } })
+        .then(r => {
+            if (r.errors) {
+                return Promise.reject(r.errors[0].message);
+            }
+            //store.dispatch({ type: 'users/passwordReset', token: r.data.resetPassword.token })
+            return Promise.resolve(r.data.resetPassword)
+        })
+        .catch(e => {
+            throw e;
+        })
     }
 
 }

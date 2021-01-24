@@ -7,19 +7,20 @@ import './style.scss';
 
 export default function Login({history}) {
 
+    const [email, setEmail] = useState('') 
+    const [password, setPassword] = useState('') 
+    const [error, setError] = useState('')
+    
     useEffect(() => {
         if (Auth.isAuthenticated()) {
             return history.push('/dashboard');
         }
     });
 
-    const [email, setEmail] = useState('') 
-    const [password, setPassword] = useState('') 
-    const [error, setError] = useState('')
-    
     function submit() {
         UserService.login(email, password)
         .then((r: any) => {
+            setError('');
             history.push('/dashboard');
         })
         .catch(e => {
