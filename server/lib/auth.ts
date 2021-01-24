@@ -15,9 +15,8 @@ function loadUser(authHeader) {
             if (user) resolve(user);
         });
     });
-        
 }
-
+    
 export async function authenticateUser(request, response, next) {
     const authHeader = request.get("authorization");
     request.user = await loadUser(authHeader);
