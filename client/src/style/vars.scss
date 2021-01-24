@@ -1,0 +1,40 @@
+
+/* Default Spacing */
+
+$defaultRadius: 15px;
+$defaultPadding: 15px;
+$itemPadding: $defaultPadding;
+
+
+/* Default Fonts */
+
+$font: 'Open Sans',
+sans-serif;
+$fontBold: 'Open Sans Bold',
+sans-serif;
+$fontBaseSize: 20px;
+$fontColor: #123;
+$fontSizeInput: 1.25rem;
+
+/* Links */
+
+$linkColor: #90C3D4;
+
+
+/* Background Colors */
+
+$gradientAngle: -30deg;
+
+$colorBgDark: linear-gradient($gradientAngle, #141e20 0%, #242b35 100%);
+$colorBgDark2: linear-gradient($gradientAngle, lighten(#141e20, 15%) 0%, lighten(#242b35, 15%) 100%);
+
+$colorBgLight: linear-gradient($gradientAngle, #0093E9 0%, #80D0C7 100%);
+$colorBgLight2: linear-gradient($gradientAngle, lighten(#0093E9, 15%) 0%, lighten(#80D0C7, 15%) 100%);
+
+
+
+/* Animations */
+$animTn: .1s;
+$animSm: .2s;
+$animMd: .5s;
+$animLg: 1s;

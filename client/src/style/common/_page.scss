@@ -1,0 +1,55 @@
+@import '../vars.scss';
+
+.page {
+    @include flex-center-col;
+
+	h1 {
+		padding: $itemPadding*2 0 0 $itemPadding*2;
+		font-size: 2em;
+		font-weight: bold;
+		text-shadow: 1px 1px 3px #000;
+		color: #ACE398;
+		font-family: $fontBold;
+        margin: 0 0 20px;
+	}
+
+	h2 {
+		color: #fff;
+        font-family: $fontBold;
+        margin: 0 0 20px;
+	}
+
+	.line-title {
+		width: 100%;
+		padding: $itemPadding $itemPadding*2 0;
+
+		h3 {
+			padding-bottom: 5px;
+			width: 100%;
+			border-bottom: 1px solid white;
+			color: #fff;
+		}
+	}
+
+	.items {
+		max-width: 100%;
+		padding: $itemPadding;
+
+		.item {
+			max-width: 100%;
+		}
+
+		&.col-2 {
+			.item {
+				width: 50%;
+				min-width: 50%;
+				max-width: 50%;
+				height: 200px;
+
+				&.open {
+					height: 400px;
+				}
+			}
+		}
+	}
+}

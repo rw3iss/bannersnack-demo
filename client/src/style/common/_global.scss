@@ -1,0 +1,35 @@
+
+html, body {
+	min-height: 100%;
+	height: 100%;
+	width: 100vw;
+	max-width: 100vw;
+    margin: 0;
+    padding: 0;
+	box-sizing: border-box;
+    overflow-x: hidden;
+	color: $fontColor;
+    font-family: $font;
+    background: $colorBgDark;
+    font-size: $fontBaseSize;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+	min-height: 100%;
+	height: 100%;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+a {
+	color: $linkColor;
+	transition: color .2s ease;
+
+	&:hover {
+		color: lighten($linkColor, 15%);
+	}
+}

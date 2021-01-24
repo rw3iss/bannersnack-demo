@@ -1,0 +1,35 @@
+scalar Date
+
+type User {
+    id: ID
+    email: String
+    password: String
+}
+
+type Item {
+    id: ID
+    title: String
+    createdAt: Date
+    userEmail: String
+}
+
+type LoginResponse {
+    token: String,
+    user: User
+}
+
+type SignupResponse {
+    success: Boolean,
+    message: String
+}
+
+type Query {
+    getItems(limit: Int): [Item]
+}
+
+type Mutation {
+    signup(email: String!, password: String!): SignupResponse
+    login(email: String!, password: String!): LoginResponse
+    resetPassword(email: String!): Boolean
+    addItem(title: String!): Item
+}

@@ -1,0 +1,42 @@
+@import '../../style/mixins.scss';
+
+#dashboard {
+    flex: 1;
+    @include flex-col;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    
+    .add-item {
+        margin: 20px;
+        text-align: center;
+    }
+    
+    .items {
+        .table {
+            min-width: 600px;
+            
+            .col-header,
+            .row {
+                .id {
+                    flex: .1;
+                }
+                
+                .title {
+                    flex: .3;
+                }
+                
+                .created-by {
+                    flex: .3
+                }
+                
+                .created-at {
+                    flex: .3
+                }
+            }
+        }
+    }
+    
+}
+

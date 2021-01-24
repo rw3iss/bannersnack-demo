@@ -1,0 +1,25 @@
+@import '../../style/mixins';
+
+#login {
+  
+    .success {
+        @include flex-center-col;
+        padding: 10px 0;
+        color: #4f5;
+        
+        span {
+            margin-bottom: 5px;
+        }
+    }
+
+    .error {
+        padding: 0 0 20px;
+        color: #f55;
+    }
+    
+    .reset {
+        display: block;
+        margin: 0 0 20px;
+    }
+    
+}

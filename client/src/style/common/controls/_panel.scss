@@ -1,0 +1,31 @@
+.panel {
+    background: $colorBgDark2;
+    border-radius: 15px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 2px 2px 10px rgba(0,0,0,.3);
+    
+    &.md {
+        width: 20vw;
+    }
+    
+    .header {
+        padding: 10px;
+        font-weight: bold;
+        background: rgba(0,0,0,.2);
+        border-bottom: 1px solid rgba(0,0,0,.3);
+    }
+    
+    .inner {
+        padding: $defaultPadding;
+    }
+    
+    .actions {
+        padding: 0 10px 20px;
+        
+        .button { 
+            margin: 0 5px; 
+        }
+    }
+    
+}
