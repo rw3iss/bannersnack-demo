@@ -25,10 +25,12 @@ export function App() {
                     <Link to="/" className="logo">Bannersnack</Link>
 
                     <nav>
+
                         { !isLoggedIn && <Link to="/login">Login</Link> }
-                        { !isLoggedIn &&  <Link to="/signup">Signup</Link> }
+                        { !isLoggedIn && <Link to="/signup">Signup</Link> }
 
                         { isLoggedIn &&  <Link to="/logout">Logout</Link> }
+
                     </nav>
                     
                 </header>

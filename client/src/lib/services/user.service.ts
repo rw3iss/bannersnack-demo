@@ -44,9 +44,9 @@ class UserService extends HttpClient {
         })
     }
 
-    resetPassword(email: string) {     
-        var query = `mutation ResetPassword($email: String!) {
-            resetPassword(email: $email) {
+    forgotPassword(email: string) {     
+        var query = `mutation ForgotPassword($email: String!) {
+            forgotPassword(email: $email) {
                 success, message
             }
         }`
@@ -56,7 +56,26 @@ class UserService extends HttpClient {
             if (r.errors) {
                 return Promise.reject(r.errors[0].message);
             }
-            //store.dispatch({ type: 'users/passwordReset', token: r.data.resetPassword.token })
+            //store.dispatch({ type: 'users/passwordReset', token: r.data.forgotPassword.token })
+            return Promise.resolve(r.data.forgotPassword)
+        })
+        .catch(e => {
+            throw e;
+        })
+    }
+
+    resetPassword(resetToken: string, newPassword: string) {     
+        var query = `mutation ResetPassword($resetToken: String!, $newPassword: String!) {
+            resetPassword(resetToken: $resetToken, newPassword: $newPassword) {
+                success, message
+            }
+        }`
+
+        return this.request(`/graphql`, 'POST', { query, variables: { resetToken, newPassword } })
+        .then(r => {
+            if (r.errors) {
+                return Promise.reject(r.errors[0].message);
+            }
             return Promise.resolve(r.data.resetPassword)
         })
         .catch(e => {

@@ -1,1 +1,1 @@
-nodemon index.js
+npm run start

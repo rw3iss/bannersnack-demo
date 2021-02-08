@@ -4,6 +4,8 @@ import './style.scss';
 
 export default function Logout({history}) {
 
+    console.log('logout')
+    
     useEffect(() => {
         Auth.logout();
         history.push('/login');
@@ -17,7 +19,7 @@ export default function Logout({history}) {
                 <div className="header">Logging Out...</div>
 
             </div>
-            index.ts
+
         </div>
 	);
 }

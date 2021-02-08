@@ -92,7 +92,7 @@ module.exports = {
         }
     },
 
-    async resetPassword({ email }, ctx) {
+    async forgotPassword({ email }, ctx) {
         try {
             let resetToken = jsonwebtoken.sign(
                 { email: email }, 
@@ -110,10 +110,39 @@ module.exports = {
             })
 
             // Todo: use some service to send emails... 
+            console.log(`\n Reset Link:\n\nhttp://localhost:3000/reset-password?token=${resetToken}`);
             
             return {
                 success: true,
                 message: "Please check your email (todo) ..."
+            }
+        } catch (error) {
+            throw new Error(error.message)
+        }
+    },
+
+    // called when a user clicks email link, going to browser, and submits a new password.
+    // TODO
+    async resetPassword({ resetToken, newPassword }, ctx) {
+        try {
+            const user = await User.findOne({ where: { resetToken }})
+            if (!user) {
+                console.log('No user')
+                throw new Error('Reset token is invalid')
+            }
+
+            if (user.resetToken != resetToken) {
+                throw new Error('Reset token is invalid')
+            }
+
+            // Update the password
+            user.update({
+                password: await bcrypt.hash(newPassword, 10)
+            })
+
+            return {
+                success: true,
+                message: "Your password has been updated. You may now login."
             }
         } catch (error) {
             throw new Error(error.message)

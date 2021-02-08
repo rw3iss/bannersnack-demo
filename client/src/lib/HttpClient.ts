@@ -6,15 +6,11 @@ const API_BASE_URL = config.apiUrl;
 export default class HttpClient {
 
     public request(url: string, method: string = 'GET', body: any = undefined): Promise<any> {
-        return new Promise((resolve, reject) => {
-            this._request(API_BASE_URL + url, method.toLowerCase(), body)
-                .then((r: any) => {
-                    return resolve(r);
-                })
-                .catch(e => {
-                    return reject(e);
-                });
-        });
+       return this._request(API_BASE_URL + url, method.toLowerCase(), body);
+    }
+
+    public externalRequest(url: string, method: string = 'GET', body: any = undefined): Promise<any> {
+        return this._request(url, method.toLowerCase(), body);
     }
 
     // underlying Request wrapper
@@ -56,4 +52,3 @@ export default class HttpClient {
     }
 
 }
-      

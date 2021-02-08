@@ -30,6 +30,7 @@ type Query {
 type Mutation {
     signup(email: String!, password: String!): ActionResponse
     login(email: String!, password: String!): LoginResponse
-    resetPassword(email: String!): ActionResponse
+    forgotPassword(email: String!): ActionResponse
+    resetPassword(resetToken: String!, newPassword: String!): ActionResponse
     addItem(title: String!): Item
 }

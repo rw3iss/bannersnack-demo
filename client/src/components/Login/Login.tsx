@@ -50,7 +50,7 @@ export default function Login({history}) {
                     <div className="button" onClick={submit}>Submit</div>
                 </div>
 
-                <Link className="reset" to="/reset-password">Reset Password</Link>
+                <Link className="reset" to="/forgot-password">Forgot Password?</Link>
 
             </div>
 

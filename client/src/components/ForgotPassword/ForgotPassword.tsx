@@ -4,15 +4,11 @@ import FormInputRow from '../shared/FormInputRow';
 import Auth from '../../lib/Auth';
 import './style.scss';
 
-export default function ResetPassword({history}) {
+export default function ForgotPassword({history}) {
 
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [error, setError] = useState('')
     const [success, setSuccess] = useState(false) 
-
-    // todo: grab resetToken from url
-    let resetToken = 'abc';
     
     useEffect(() => {
         if (Auth.isAuthenticated()) {
@@ -21,7 +17,7 @@ export default function ResetPassword({history}) {
     }, [history]);
 
     function submit() {
-        UserService.resetPassword(resetToken, password)
+        UserService.forgotPassword(email)
         .then(r => {
             setError('');
             setSuccess(r.success);
@@ -32,25 +28,23 @@ export default function ResetPassword({history}) {
     }
 
 	return (
-		<div id="reset-password" className="page">
+		<div id="forgot-password" className="page">
             
             <div className="panel md">
 
-                <div className="header">Reset Password</div>
+                <div className="header">Forgot Password</div>
 
                 <div className="inner">
 
-                    Enter a new password to use:
-
                     <div className="form">
-                        <FormInputRow label="New Password:" type="password" onChange={(e) => setPassword(e.target.value)} />
+                        <FormInputRow label="E-mail:" onChange={(e) => setEmail(e.target.value)} />
                     </div>
 
                 </div>
 
                 { (success !== false) && 
                     <div className="success">
-                        <span>Your password has been changed. You may now login.</span>
+                        <span>Please check your email.</span>
                     </div>
                 }
 

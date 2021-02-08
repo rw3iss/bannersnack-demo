@@ -1,15 +1,18 @@
-import { set } from 'lodash';
 import Cookies from './Cookies';
 
 const _getAccessToken = () => Cookies.get('token');
 
 // adds Authorization header with JWT token, etc...
-function _getRequestConfig(opts: any = undefined) {
+function _makeRequestOptions(opts: any = undefined) {
     let options = opts || {};
 
     let token = _getAccessToken();
-    if (token)
-        set(options, ["headers", "Authorization"], `Bearer ${token}`);
+    if (token) {
+        if (!options.headers) {
+            options.headers = {};
+        }
+        options.headers["Authorization"] = `Bearer ${token}`;
+    }
 
     return options;
 }
@@ -22,7 +25,7 @@ export default class Request {
             method: 'GET',
             //credentials: 'include'
         };
-        opts = _getRequestConfig(opts)
+        opts = _makeRequestOptions(opts)
         return fetch(url, (opts as any));
     }
 
@@ -37,7 +40,7 @@ export default class Request {
                 ...headers
             }
         };
-        opts = _getRequestConfig(opts)
+        opts = _makeRequestOptions(opts)
 
         return fetch(url, (opts as any));
     }
@@ -52,7 +55,7 @@ export default class Request {
                 'Content-Type': 'application/json'
             }
         };
-        opts = _getRequestConfig(opts)
+        opts = _makeRequestOptions(opts)
         return fetch(url, (opts as any));
     }
 
@@ -60,7 +63,7 @@ export default class Request {
         let opts = {
             method: 'DELETE'
         };
-        opts = _getRequestConfig(opts)
+        opts = _makeRequestOptions(opts)
         return fetch(url, opts);
     }
     

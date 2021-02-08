@@ -4,6 +4,7 @@
     "node_modules": true,
     ".vscode": true,
     "public": true,
-    "server/package-lock.json": true
+    "server/package-lock.json": true,
+    "client/src/react-app-env.d.ts": true
   }
 }
